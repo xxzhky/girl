@@ -1,11 +1,17 @@
 package com.dt.controller;
 
 import com.dt.domain.Girl;
+import com.dt.domain.Result;
 import com.dt.repository.GirlRepository;
 import com.dt.servive.GirlService;
+import com.dt.util.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -13,6 +19,8 @@ import java.util.List;
  */
 @RestController
 public class GirlController {
+
+    private Logger logger= LoggerFactory.getLogger(GirlController.class);
 
     @Autowired
     private GirlRepository girlRepository;
@@ -33,6 +41,22 @@ public class GirlController {
         girl.setAge(age);
         girl.setCupSize(cupSize);
         return girlRepository.save(girl);
+
+    }
+
+    @PostMapping("/girlsin")
+    public Result<Girl> girlAdd1 (@Valid Girl girl, BindingResult bindingResult){
+        //Result result= new Result();
+        if (bindingResult.hasErrors()){
+            String errMsg=bindingResult.getFieldError().getDefaultMessage();
+            logger.error(errMsg);
+
+            return ResultUtil.err(-1, errMsg);
+        }
+        girl.setAge(girl.getAge());
+        girl.setCupSize(girl.getCupSize());
+
+        return ResultUtil.ok(girlRepository.save(girl));
 
     }
 
@@ -71,6 +95,12 @@ public class GirlController {
     @GetMapping("/girls/save2")
     public void GirlsSave(){
         girlService.batchSave();
+    }
+
+
+    @GetMapping("/girls/getage/{id}")
+    public Result getGirlAge(@PathVariable("id") Integer id){
+        return girlService.getAge(id);
     }
 
 }

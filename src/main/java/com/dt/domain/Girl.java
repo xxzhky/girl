@@ -4,6 +4,7 @@ package com.dt.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 /**
  * Created by RID on 2017/4/12.
@@ -19,6 +20,7 @@ public class Girl {
 
     private String cupSize;
 
+    @Min(value = 18, message = "The Girl who is less than 18 DON'T enter into")
     private Integer age;
 
 
