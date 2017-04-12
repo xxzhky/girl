@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://taffoo.net:3306/javassdb
+    username: root
+    password: cyberaudit
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
