@@ -4,8 +4,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://taffoo.net:3306/javassdb
-#    username: freddy
-    username: neil
+    username: freddy
+#    username: neil
     password: 2frederica.99z17
   jpa:
     hibernate:
