@@ -1,6 +1,8 @@
 package com.dt.controller;
 
 import com.dt.properties.GirlProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,5 +49,15 @@ public class HelloController {
     }
 
 
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String testLogLevel() {
+        logger.debug("Logger Level: DEBUG成功");
+        logger.info("Logger Level : INFO");
+        logger.error("Logger Level : ERROR");
+        return "";
+    }
 
 }

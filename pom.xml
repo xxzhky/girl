@@ -55,23 +55,35 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- 提供监控/health端点/loggers端点 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.minidev</groupId>
+			<artifactId>json-smart</artifactId>
+			<version>2.2.1</version>
+		</dependency>
 	</dependencies>
-	<!--<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-releasetrain</artifactId>
-				<version>${release-train}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>-->
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- config the sys SERV
+				1. set up the configuration as below
+				2. ln -s /var/yourapp/yourapp.jar /etc/init.d/yourapp
+				3. /etc/init.d/yourapp start|stop|restart
+				-->
+				<configuration>
+					<executable>true</executable>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
