@@ -7,6 +7,16 @@ spring:
     username: freddy
 #    username: neil
     password: 2frederica.99z17
+    primary:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://taffoo.net:3306/javassdb
+      username: freddy
+      password: 2frederica.99z17
+    secondary:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://taffoo.net:3306/springmvc
+      username: freddy
+      password: 2frederica.99z17
   jpa:
     hibernate:
       ddl-auto: update
